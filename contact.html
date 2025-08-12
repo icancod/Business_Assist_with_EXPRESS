@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CONTACT</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col bg-gradient-to-r from-white to-blue-500 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-white to-blue-500 py-6 shadow-md">
+    <h1 class="text-3xl font-bold text-center text-gray-800">Contact</h1>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow flex flex-col items-center justify-center px-4 py-16">
+    <div class="w-full max-w-3xl bg-white/30 backdrop-blur-md rounded-xl shadow-lg p-8">
+      <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Get in Touch</h2>
+      <p class="text-lg mb-4 text-center">
+        📧 <strong>Email:</strong> <a href="mailto:sachindev349@gmail.com" class="text-blue-700 underline">sachindev349@gmail.com</a>
+      </p>
+
+      <!-- Map -->
+      <div class="rounded-lg overflow-hidden shadow mb-6">
+        <iframe 
+          class="w-full h-[350px]" 
+          src="https://www.openstreetmap.org/export/embed.html?bbox=77.56407737731935%2C12.919241206343573%2C77.61926651000978%2C12.947474179333993&amp;layer=mapnik&amp;marker=12.933358092189604%2C77.59167194366455" 
+          style="border: 0;">
+        </iframe>
+      </div>
+      <p class="text-center mb-4">
+        <a href="https://www.openstreetmap.org/?mlat=12.93336&amp;mlon=77.59167#map=15/12.93336/77.59167"
+          class="text-blue-700 underline">View Larger Map</a>
+      </p>
+
+      <!-- Co-ordinates -->
+      <div class="text-center">
+        <p>📍 <strong>Latitude:</strong> <span id="lat" class="font-mono"></span></p>
+        <p>📍 <strong>Longitude:</strong> <span id="lon" class="font-mono"></span></p>
+        <div id="error" class="text-red-600 mt-2"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-white to-blue-500 text-gray-800 text-center py-4">
+    &copy; 2025 Business Manager Platform. All rights reserved.
+  </footer>
+
+  <script src="contact.js"></script>
+</body>
+</html>

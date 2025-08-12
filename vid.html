@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gradient-to-r from-white to-blue-100 min-h-screen flex items-center justify-center">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Management Video</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center p-6">
+
+  <div class="max-w-4xl w-full shadow-lg rounded-lg overflow-hidden bg-white p-4">
+    <h1 class="text-2xl md:text-3xl font-bold mb-4 text-center text-blue-800">
+      10 Management Skills Every Manager Should Have
+    </h1>
+
+    <video id="myVideo" controls class="w-full rounded-lg mb-4">
+      <source src="management_importance.mp4" type="video/mp4" />
+      <source src="management_importance.ogg" type="video/ogg" />
+      <track src="management_skills_full.vtt" kind="subtitles" srclang="en" label="English" default />
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="flex justify-center space-x-4">
+      <button id="rewind" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">⏪ Rewind 10s</button>
+      <button id="playPause" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700">▶️ Play</button>
+      <button id="forward" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">⏩ Forward 10s</button>
+    </div>
+  </div>
+
+  <script src="vid.js"></script>
+
+</body>
+</html>

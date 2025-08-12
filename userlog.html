@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./userlog.css" />
+  <title>USER LOG-IN</title>
+</head>
+
+<body class="min-h-screen flex flex-col bg-gradient-to-r from-white to-blue-500 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-white to-blue-500 text-gray-800 py-5 shadow-md">
+    <h5 class="text-gray-50 w-max mx-auto text-xl font-semibold">USER LOG-IN</h5>
+    <!-- Optional nav -->
+  </header>
+
+  <!-- Login Section -->
+  <section class="flex-grow flex items-center justify-center py-16">
+    <div class="w-full max-w-md bg-white/30 backdrop-blur-md rounded-xl shadow-xl p-8">
+      <h2 class="text-3xl font-bold mb-6 text-center text-white">Login</h2>
+      <form id="loginForm" class="space-y-6">
+        <!-- Username -->
+        <div>
+          <label for="username" class="block text-sm font-medium mb-1 text-white">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter username"
+            class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
+          />
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label for="password" class="block text-sm font-medium mb-1 text-white">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter password"
+            class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center">
+          <button
+            type="submit"
+            class="bg-white text-fuchsia-600 font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition"
+          >
+            Log In
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  
+ 
+<!-- marquee direction -->
+<!-- <section id="news" class="px-8 md:px-32 py-16 bg-white overflow-x-auto">
+  <h2 class="text-3xl font-bold mb-8 text-blue-600">Latest Business News</h2>
+  <div class=" relative w-full overflow-x-auto">
+    <div id="newsContainer" class="flex animate-scroll space-x-4 w-max"></div>
+  </div>
+</section> -->
+
+
+
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-white to-blue-500 text-gray-800 text-center text-white">
+    &copy; 2025 Business Manager Platform. All rights reserved.
+  </footer>
+
+  <script src="userlog.js"></script>
+</body>
+</html>

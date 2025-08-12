@@ -1,0 +1,19 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "started with express and fetching from own api",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "concurrently \"node server.js\" \"node server2.js\""
+  },
+  "author": "sachin D",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}

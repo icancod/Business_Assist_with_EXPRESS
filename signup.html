@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .highlighted {
+      @apply bg-blue-200 text-blue-800 font-semibold rounded px-2;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-r from-white to-blue-500 min-h-screen flex flex-col items-center py-16 text-gray-800">
+
+  <h1 class="text-3xl font-bold mb-8 text-white">Sign Up</h1>
+
+  <form id="signupForm" class=" bg-white/30 backdrop-blur-md p-8 rounded-lg shadow-md w-full max-w-md space-y-4 ">
+    <div>
+      <label for="fullName" class="block text-sm font-semibold mb-1">Full Name</label>
+      <input type="text" id="fullName" name="fullName" placeholder="Your Name" required
+        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"/>
+    </div>
+
+    <div>
+      <label for="email" class="block text-sm font-semibold mb-1">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required
+        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"/>
+    </div>
+
+    <div>
+      <label for="productCategory" class="block text-sm font-semibold mb-1">Product Category</label>
+      <input type="text" id="productCategory" name="productCategory" placeholder="E.g., Electronics" required
+        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"/>
+    </div>
+
+    <!-- <fieldset>
+      <legend class="block text-sm font-semibold mb-2">Preferred Service Level</legend>
+      <div class="space-y-2">
+        <label class="inline-flex items-center cursor-pointer radio-label">
+          <input type="radio" name="serviceLevel" value="Basic" required class="mr-2" />
+          Basic
+        </label>
+        <label class="inline-flex items-center cursor-pointer radio-label">
+          <input type="radio" name="serviceLevel" value="Premium" class="mr-2" />
+          Premium
+        </label>
+        <label class="inline-flex items-center cursor-pointer radio-label">
+          <input type="radio" name="serviceLevel" value="Enterprise" class="mr-2" />
+          Enterprise
+        </label>
+      </div>
+    </fieldset> -->
+
+    <section class="w-full max-w-md mx-auto mb-6">
+        <h5 >Preferred Service Level</h5>
+        <div class="flex justify-around justify-between space-x-4">
+        <input type="radio" id="basic" name="serviceLevel"required value="BASIC">
+        <label for="basic">BASIC</label><br>
+        <input type="radio" id="premium" name="serviceLevel" value="PREMIUM">
+        <label for="premium">PREMIUM</label><br>
+        <input type="radio" id="enterprise" name="serviceLevel" value="ENTERPRISE">
+        <label for="enterprise">ENTERPRISE</label>
+        </div>
+    </section>
+
+    <button type="submit"
+      class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+      Submit
+    </button>
+  </form>
+
+  <!-- Output Box -->
+  <div id="output" class="mt-8 w-full max-w-md bg-white p-6 rounded-lg shadow hidden"></div>
+
+  <script src="signup.js"></script>
+</body>
+</html>

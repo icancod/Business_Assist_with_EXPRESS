@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Staff Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col items-center p-8">
+
+  <!-- Greeting -->
+  <h1 class="text-3xl font-bold mb-2 text-blue-600">Welcome to Staff Management</h1>
+  <p class="mb-6 text-gray-700">Manage your team effectively — view, update, and add staff easily.</p>
+
+  <!-- Buttons -->
+  <div class="flex space-x-4 mb-6">
+    <button id="viewEmployeesBtn" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Click to View Employees
+    </button>
+    <button id="addEmployeeBtn" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+      Add Employee
+    </button>
+  </div>
+
+  <!-- Add Form (hidden initially) -->
+  <form id="staffForm" class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4 hidden">
+    <input type="hidden" id="staffId" />
+    <div>
+      <label class="block font-semibold mb-1">Name</label>
+      <input id="name" type="text" class="w-full border rounded-lg px-4 py-2" placeholder="Full Name" required />
+    </div>
+    <div>
+      <label class="block font-semibold mb-1">Role</label>
+      <input id="role" type="text" class="w-full border rounded-lg px-4 py-2" placeholder="Role" required />
+    </div>
+    <div>
+      <label class="block font-semibold mb-1">Email</label>
+      <input id="email" type="email" class="w-full border rounded-lg px-4 py-2" placeholder="Email" required />
+    </div>
+    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+      Save Staff
+    </button>
+  </form>
+
+  <!-- Staff List -->
+  <div id="staffSection" class="mt-8 w-full max-w-4xl hidden">
+    <h2 class="text-xl font-bold mb-4">Staff List</h2>
+    <div id="staffList" class="grid gap-4 sm:grid-cols-2 md:grid-cols-3"></div>
+  </div>
+
+  <script src="staff.js"></script>
+</body>
+</html>

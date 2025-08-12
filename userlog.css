@@ -1,0 +1,16 @@
+header{
+    color: blue;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Disable smooth scroll for very small screens */
+@media (max-width: 640px) {
+  html {
+    scroll-behavior: auto;
+  }
+}

@@ -1,0 +1,31 @@
+html {
+  /* font-size: 16px; */
+  scroll-behavior: smooth;
+}
+
+/* Reduce base font size on medium screens */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Disable smooth scroll for very small screens */
+@media (max-width: 640px) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@keyframes scroll {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+   .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }  

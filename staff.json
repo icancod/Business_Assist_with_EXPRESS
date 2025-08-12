@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "John Doe",
+    "role": "manager 2",
+    "email": "john.doe@example.com"
+  },
+  {
+    "id": "2",
+    "name": "Jane Smith",
+    "role": "Sales Executive",
+    "email": "jane.smith@example.com"
+  },
+  {
+    "name": "Sachin",
+    "role": "manager 4",
+    "email": "sachin@gmail.com",
+    "id": 1754928926254
+  },
+  {
+    "name": "niki",
+    "role": "HR Specialists",
+    "email": "sachin.kumar@mca.christuniversity.in",
+    "id": 1755020510769
+  }
+]

@@ -1,78 +1,97 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sign Up</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .highlighted {
-      @apply bg-blue-200 text-blue-800 font-semibold rounded px-2;
-    }
-  </style>
 </head>
-
-<body class="bg-gradient-to-r from-white to-blue-500 min-h-screen flex flex-col items-center py-16 text-gray-800">
-
-  <h1 class="text-3xl font-bold mb-8 text-white">Sign Up</h1>
-
-  <form id="signupForm" class=" bg-white/30 backdrop-blur-md p-8 rounded-lg shadow-md w-full max-w-md space-y-4 ">
-    <div>
-      <label for="fullName" class="block text-sm font-semibold mb-1">Full Name</label>
-      <input type="text" id="fullName" name="fullName" placeholder="Your Name" required
-        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"/>
-    </div>
-
-    <div>
-      <label for="email" class="block text-sm font-semibold mb-1">Email</label>
-      <input type="email" id="email" name="email" placeholder="you@example.com" required
-        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"/>
-    </div>
-
-    <div>
-      <label for="productCategory" class="block text-sm font-semibold mb-1">Product Category</label>
-      <input type="text" id="productCategory" name="productCategory" placeholder="E.g., Electronics" required
-        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"/>
-    </div>
-
-    <!-- <fieldset>
-      <legend class="block text-sm font-semibold mb-2">Preferred Service Level</legend>
-      <div class="space-y-2">
-        <label class="inline-flex items-center cursor-pointer radio-label">
-          <input type="radio" name="serviceLevel" value="Basic" required class="mr-2" />
-          Basic
-        </label>
-        <label class="inline-flex items-center cursor-pointer radio-label">
-          <input type="radio" name="serviceLevel" value="Premium" class="mr-2" />
-          Premium
-        </label>
-        <label class="inline-flex items-center cursor-pointer radio-label">
-          <input type="radio" name="serviceLevel" value="Enterprise" class="mr-2" />
-          Enterprise
-        </label>
-      </div>
-    </fieldset> -->
-
-    <section class="w-full max-w-md mx-auto mb-6">
-        <h5 >Preferred Service Level</h5>
-        <div class="flex justify-around justify-between space-x-4">
-        <input type="radio" id="basic" name="serviceLevel"required value="BASIC">
-        <label for="basic">BASIC</label><br>
-        <input type="radio" id="premium" name="serviceLevel" value="PREMIUM">
-        <label for="premium">PREMIUM</label><br>
-        <input type="radio" id="enterprise" name="serviceLevel" value="ENTERPRISE">
-        <label for="enterprise">ENTERPRISE</label>
+<body class="bg-gradient-to-r from-white to-blue-500 text-gray-800">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-8 text-center">User Management</h1>
+    
+    <!-- User Form -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+      <h2 class="text-xl font-semibold mb-4" id="formTitle">Add New User</h2>
+      <form id="userForm" enctype="multipart/form-data" class="space-y-4">
+        <input type="hidden" id="userId">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Full Name -->
+          <div>
+            <label for="fullName" class="block text-sm font-medium mb-1">Full Name</label>
+            <input type="text" id="fullName" name="name" required
+                   class="w-full px-3 py-2 border rounded-md">
+          </div>
+          
+          <!-- Email -->
+          <div>
+            <label for="email" class="block text-sm font-medium mb-1">Email</label>
+            <input type="email" id="email" name="email" required
+                   class="w-full px-3 py-2 border rounded-md">
+          </div>
+          
+          <!-- Phone -->
+          <div>
+            <label for="phone" class="block text-sm font-medium mb-1">Phone</label>
+            <input type="text" id="phone" name="phone" required
+                   class="w-full px-3 py-2 border rounded-md">
+          </div>
+          
+          <!-- Product Category -->
+          <div>
+            <label for="productCategory" class="block text-sm font-medium mb-1">Product Category</label>
+            <input type="text" id="productCategory" name="productcategory" required
+                   class="w-full px-3 py-2 border rounded-md">
+          </div>
+          
+          <!-- Service Level -->
+          <div class="md:col-span-2">
+            <span class="block text-sm font-medium mb-2">Service Level</span>
+            <div class="flex space-x-4">
+              <label class="inline-flex items-center">
+                <input type="radio" name="servicelevel" value="BASIC" required class="mr-2">
+                BASIC
+              </label>
+              <label class="inline-flex items-center">
+                <input type="radio" name="servicelevel" value="PREMIUM" class="mr-2">
+                PREMIUM
+              </label>
+              <label class="inline-flex items-center">
+                <input type="radio" name="servicelevel" value="ENTERPRISE" class="mr-2">
+                ENTERPRISE
+              </label>
+            </div>
+          </div>
+          
+          <!-- Profile Picture -->
+          <div class="md:col-span-2">
+            <label for="profilePicture" class="block text-sm font-medium mb-1">Profile Picture</label>
+            <input type="file" id="profilePicture" name="profilepicture" accept="image/*"
+                   class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+            <img id="profilePreview" src="" alt="Profile Preview" class="mt-2 w-32 h-32 object-cover rounded hidden">
+          </div>
         </div>
-    </section>
-
-    <button type="submit"
-      class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
-      Submit
-    </button>
-  </form>
-
-  <!-- Output Box -->
-  <div id="output" class="mt-8 w-full max-w-md bg-white p-6 rounded-lg shadow hidden"></div>
+        
+        <div class="flex justify-end space-x-3 pt-4">
+          <button type="button" id="cancelBtn" class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400 hidden">
+            Cancel
+          </button>
+          <button type="submit" id="submitBtn" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+            Add User
+          </button>
+        </div>
+      </form>
+    </div>
+    
+    <!-- Users List -->
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-xl font-semibold mb-4">Users</h2>
+      <div id="usersList" class="space-y-4">
+        <!-- Users will be loaded here -->
+      </div>
+    </div>
+  </div>
 
   <script src="signup.js"></script>
 </body>

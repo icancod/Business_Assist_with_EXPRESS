@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 min-h-screen p-8">
+  <div class="max-w-6xl mx-auto">
+    <!-- Profile Header -->
+    <div class="flex justify-between items-center mb-8">
+      <h1 class="text-3xl font-bold text-gray-800">User Profile</h1>
+      <button id="refreshBtn" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+        <i class="fas fa-sync-alt mr-2"></i> Refresh
+      </button>
+    </div>
+
+    <!-- Profile Content -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+      <div class="flex flex-col md:flex-row gap-6">
+        <!-- Profile Picture Column -->
+        <div class="flex-shrink-0">
+          <div id="profilePictureContainer" class="relative">
+            <img id="profilePictureInput" src="" alt="Profile" 
+                 class="w-32 h-32 rounded-full object-cover border-4 border-white shadow">
+            <label for="profilePictureInput" 
+                   class="absolute bottom-0 right-0 bg-blue-600 text-white p-2 rounded-full cursor-pointer hover:bg-blue-700">
+              <i class="fas fa-camera"></i>
+              <input type="file" id="profilePictureInput" accept="image/*" class="hidden">
+            </label>
+          </div>
+        </div>
+
+        <!-- Profile Details Column -->
+        <div class="flex-grow">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-500">Full Name</label>
+              <p id="fullNameInput" class="mt-1 font-medium">Loading...</p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-500">Email</label>
+              <p id="emailInput" class="mt-1 font-medium">Loading...</p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-500">Phone</label>
+              <p id="phoneInput" class="mt-1 font-medium">Loading...</p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-500">Product Category</label>
+              <p id="productCategoryInput" class="mt-1 font-medium">Loading...</p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-500">Service Level</label>
+              <p id="serviceLevel" class="mt-1 font-medium">Loading...</p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-500">Member Since</label>
+              <p id="createdAt" class="mt-1 font-medium">Loading...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex flex-wrap gap-4 mb-8">
+      <button id="editBtn" class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">
+        <i class="fas fa-edit mr-2"></i> Edit Profile
+      </button>
+      <button id="deleteBtn" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">
+        <i class="fas fa-trash mr-2"></i> Delete Account
+      </button>
+      <button id="downloadBtn" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+        <i class="fas fa-download mr-2"></i> Download Profile
+      </button>
+      <button id="getAllUsersBtn" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">
+        <i class="fas fa-users mr-2"></i> View All Users
+      </button>
+    </div>
+
+    <!-- All Users Section -->
+    <div id="allUsersContainer" class="bg-white rounded-lg shadow-md p-6 mb-8 hidden">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-semibold">All Users</h2>
+        <button id="closeAllUsersBtn" class="text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div id="allUsersList" class="space-y-4 max-h-96 overflow-y-auto">
+        <!-- Users will be loaded here -->
+      </div>
+    </div>
+
+    <!-- Edit Form (Initially Hidden) -->
+    <div id="editFormContainer" class="bg-white rounded-lg shadow-md p-6 hidden">
+      <h2 class="text-xl font-semibold mb-4">Edit Profile</h2>
+      <form id="editForm" class="space-y-4">
+        <input type="hidden" id="editUserId">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="editFullName" class="block text-sm font-medium text-gray-700">Full Name</label>
+            <input type="text" id="editFullName" name="fullName" required 
+                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+          </div>
+          <div>
+            <label for="editEmail" class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" id="editEmail" name="email" required 
+                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+          </div>
+          <div>
+            <label for="editPhone" class="block text-sm font-medium text-gray-700">Phone</label>
+            <input type="tel" id="editPhone" name="phone" required 
+                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+          </div>
+          <div>
+            <label for="editProductCategory" class="block text-sm font-medium text-gray-700">Product Category</label>
+            <input type="text" id="editProductCategory" name="productCategory" required 
+                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium text-gray-700">Service Level</label>
+            <div class="flex space-x-4 mt-1">
+              <label class="inline-flex items-center">
+                <input type="radio" name="serviceLevel" value="BASIC" class="mr-2">
+                Basic
+              </label>
+              <label class="inline-flex items-center">
+                <input type="radio" name="serviceLevel" value="PREMIUM" class="mr-2">
+                Premium
+              </label>
+              <label class="inline-flex items-center">
+                <input type="radio" name="serviceLevel" value="ENTERPRISE" class="mr-2">
+                Enterprise
+              </label>
+            </div>
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium text-gray-700">Profile Picture</label>
+            <input type="file" id="editProfilePic" name="profilePic" accept="image/*" 
+                   class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+          </div>
+        </div>
+        <div class="flex justify-end space-x-3 pt-4">
+          <button type="button" id="cancelEditBtn" class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">
+            Cancel
+          </button>
+          <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+            Save Changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="profile.js"></script>
+</body>
+</html>

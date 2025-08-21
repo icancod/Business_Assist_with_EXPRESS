@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/api/staff";
+const API_URL = "http://localhost:4000/api/staff";
 const staffForm = document.getElementById("staffForm");
 const staffList = document.getElementById("staffList");
 const staffSection = document.getElementById("staffSection");

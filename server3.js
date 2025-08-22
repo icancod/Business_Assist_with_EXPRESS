@@ -15,12 +15,13 @@ app.use(express.json());
 app.use('/uploads', express.static('uploads')); // Serve static files from the uploads directory
 
 app.post("/send-email", (req, res) => {
-  const { to, subject, text } = req.body;
+  const { to, subject, text , html} = req.body;
   const mailOptions = { 
     from: process.env.EMAIL_USER,
     to,
     subject,
-    text
+    text,
+    html
   };
     transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
@@ -58,6 +59,25 @@ app.post("/users", upload.single('profilepicture'),(req, res) => {
             }
             res.status(201).json({ message: 'User created successfully', userId: results.insertId });
 }
+    );
+});
+
+// Get user by ID
+app.get("/users/:id", (req, res) => {   
+    const userId = req.params.id;
+    connection.query(
+        'SELECT * FROM users WHERE id = ?',
+        [userId],
+        (error, results) => {
+            if (error) {
+                return res.status(500).json({ error: 'Database query failed' });
+            }
+            if (results.length === 0) {
+                return res.status(404).json({ error: 'User not found' });
+            }
+            //res.json({ user: results[0] });
+            res.json(results[0]);
+        }
     );
 });
 

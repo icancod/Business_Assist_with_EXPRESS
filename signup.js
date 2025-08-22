@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
       full_name:formData.get("name"),
       email: formData.get("email"),
       phone: formData.get("phone"),
-      product_category: formData.get("productCategory"),
+      product_category: formData.get("productcategory"),
       service_level: formData.get("servicelevel")
     };
   //     full_name: document.getElementById("name").value, // Get directly from input
@@ -192,14 +192,18 @@ document.addEventListener("DOMContentLoaded", () => {
 };
 
     // 4. Send email
+    try {
     const emailResponse = await fetch(`http://localhost:3000/send-email`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(emailContent)
     });
 
+    const emailResult = await emailResponse.json();
+
     if (!emailResponse.ok) throw new Error('Email sending failed');
 
+    console.log("Email sent:", emailResult.message);
     // 5. Show success
     resetForm();
     loadUsers();
@@ -207,9 +211,16 @@ document.addEventListener("DOMContentLoaded", () => {
       "Profile updated successfully. Confirmation email sent." : 
       "Account created successfully. Welcome email sent.");
     
-  } catch (error) {
-    console.error("Error:", error);
-    alert(`Operation ${userId ? "update" : "creation"} succeeded but email failed: ${error.message}`);
+  }catch (emailErr) {
+    
+    resetForm();
+    loadUsers();
+    alert(`User ${userId ? "updated" : "created"} successfully, but email failed: ${emailErr.message}`);
+  }
+  
+}catch (error) {
+     console.error("Main error:", error);
+  alert("Failed to save user: " + error.message);
   }
 });
 
@@ -264,12 +275,23 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch(`http://localhost:3000/users/${id}`)
       .then(response => response.json())
       .then(user => {
-        document.getElementById("fullName").value = user.full_name;
-        document.getElementById("email").value = user.email;
-        document.getElementById("phone").value = user.phone;
-        document.getElementById("productCategory").value = user.product_category;
-        document.querySelector(`input[name="servicelevel"][value="${user.service_level}"]`).checked = true;
-        
+        console.log("User data received from server:", user);  //up
+        document.getElementById("fullName").value = user.full_name || '';
+        document.getElementById("email").value = user.email || '';
+        document.getElementById("phone").value = user.phone || '';
+        document.getElementById("productCategory").value = user.product_category || '';
+         if (user.service_level) {
+        const serviceLevelRadio = document.querySelector(`input[name="servicelevel"][value="${user.service_level}"]`);
+        if (serviceLevelRadio) {
+          serviceLevelRadio.checked = true;
+        } else {
+          console.warn(`Could not find a radio button for service_level: "${user.service_level}"`);
+        }
+      }
+      
+      // Handle the profile picture preview
+      profilePreview.src = "";
+      profilePreview.classList.add("hidden");
         if (user.profile_pic) {
           profilePreview.src = `http://localhost:3000/${user.profile_pic}`;
           profilePreview.classList.remove("hidden");
